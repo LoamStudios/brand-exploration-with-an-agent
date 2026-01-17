@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latent Intent – Layouts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #FAF8F5;
+      --green-rich: #2D5A3D;
+      --green-deep: #1E3D29;
+      --gold-warm: #C9A227;
+      --gold-muted: #B8963E;
+      --gold-light: #E8D5A3;
+      --charcoal-dark: #1A2B1F;
+      --charcoal-mid: #3D4A40;
+      --charcoal-light: #5C6960;
+      --font-sans: 'Work Sans', sans-serif;
+      --font-mono: 'Fira Mono', monospace;
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+      --space-3xl: 6rem;
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: var(--font-sans);
+      background: var(--cream);
+      color: var(--charcoal-dark);
+      line-height: 1.6;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    
+    a {
+      color: var(--green-rich);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    
+    a:hover {
+      color: var(--green-deep);
+      text-decoration-color: var(--gold-warm);
+    }
+    
+    .btn {
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      text-decoration: none;
+      display: inline-block;
+      border: 2px solid transparent;
+    }
+    
+    .btn-primary {
+      background: var(--green-rich);
+      color: var(--cream);
+      border-color: var(--green-rich);
+    }
+    
+    .btn-primary:hover {
+      background: var(--green-deep);
+      border-color: var(--green-deep);
+      color: var(--cream);
+      text-decoration: none;
+    }
+    
+    .btn-secondary {
+      background: transparent;
+      color: var(--green-rich);
+      border-color: var(--green-rich);
+    }
+    
+    .btn-secondary:hover {
+      background: var(--green-rich);
+      color: var(--cream);
+      text-decoration: none;
+    }
+    
+    .mono { font-family: var(--font-mono); }
+    
+    /* Layout marker */
+    .layout-section {
+      border-bottom: 1px solid var(--gold-light);
+    }
+    
+    .layout-label {
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--charcoal-light);
+      padding: var(--space-md) var(--space-xl);
+      border-bottom: 1px solid var(--gold-light);
+      background: rgba(232, 213, 163, 0.15);
+    }
+    
+    /* ============================================
+       HERO
+    ============================================ */
+    
+    .hero {
+      padding: var(--space-3xl) var(--space-xl);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold-muted);
+      margin-bottom: var(--space-md);
+    }
+    
+    .hero h1 {
+      font-size: 3.5rem;
+      letter-spacing: -0.03em;
+      margin-bottom: var(--space-lg);
+      max-width: 14ch;
+    }
+    
+    .hero-sub {
+      font-size: 1.25rem;
+      line-height: 1.7;
+      color: var(--charcoal-mid);
+      max-width: 50ch;
+      margin-bottom: var(--space-xl);
+    }
+    
+    .hero-cta {
+      display: flex;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+    }
+    
+    /* ============================================
+       FEATURES
+    ============================================ */
+    
+    .features {
+      padding: var(--space-3xl) var(--space-xl);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    
+    .features-header {
+      text-align: center;
+      margin-bottom: var(--space-2xl);
+    }
+    
+    .features-header h2 {
+      font-size: 2rem;
+      margin-bottom: var(--space-md);
+    }
+    
+    .features-header p {
+      font-size: 1.0625rem;
+      color: var(--charcoal-mid);
+      max-width: 50ch;
+      margin: 0 auto;
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-xl);
+    }
+    
+    @media (max-width: 800px) {
+      .features-grid { grid-template-columns: 1fr; }
+    }
+    
+    .feature-card {
+      border: 1px solid var(--charcoal-dark);
+      padding: var(--space-xl);
+    }
+    
+    .feature-icon {
+      font-family: var(--font-mono);
+      font-size: 1.5rem;
+      color: var(--green-rich);
+      margin-bottom: var(--space-md);
+    }
+    
+    .feature-card h3 {
+      font-size: 1.125rem;
+      margin-bottom: var(--space-sm);
+    }
+    
+    .feature-card p {
+      font-size: 0.9375rem;
+      color: var(--charcoal-mid);
+      line-height: 1.7;
+    }
+    
+    /* ============================================
+       TESTIMONIAL
+    ============================================ */
+    
+    .testimonial {
+      padding: var(--space-3xl) var(--space-xl);
+      background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 12px,
+        var(--charcoal-light) 12px,
+        var(--charcoal-light) 12.5px
+      );
+      background-color: var(--cream);
+    }
+    
+    .testimonial-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      background: var(--cream);
+      border: 1px solid var(--charcoal-dark);
+      padding: var(--space-2xl);
+    }
+    
+    .testimonial-quote {
+      font-size: 1.375rem;
+      font-style: italic;
+      line-height: 1.7;
+      color: var(--charcoal-dark);
+      margin-bottom: var(--space-lg);
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+    }
+    
+    .testimonial-avatar {
+      width: 48px;
+      height: 48px;
+      background: var(--green-rich);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--cream);
+      font-size: 1rem;
+    }
+    
+    .testimonial-name {
+      font-family: var(--font-mono);
+      font-size: 0.9375rem;
+      font-weight: 600;
+    }
+    
+    .testimonial-role {
+      font-size: 0.875rem;
+      color: var(--charcoal-light);
+    }
+    
+    /* ============================================
+       PRICING
+    ============================================ */
+    
+    .pricing {
+      padding: var(--space-3xl) var(--space-xl);
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .pricing-header {
+      text-align: center;
+      margin-bottom: var(--space-2xl);
+    }
+    
+    .pricing-header h2 {
+      font-size: 2rem;
+      margin-bottom: var(--space-md);
+    }
+    
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+    }
+    
+    @media (max-width: 800px) {
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
+    
+    .pricing-card {
+      border: 1px solid var(--charcoal-mid);
+      padding: var(--space-xl);
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .pricing-card.featured {
+      border-color: var(--green-rich);
+      border-width: 2px;
+    }
+    
+    .pricing-tier {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--charcoal-light);
+      margin-bottom: var(--space-sm);
+    }
+    
+    .pricing-price {
+      font-family: var(--font-mono);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--charcoal-dark);
+      margin-bottom: var(--space-xs);
+    }
+    
+    .pricing-price span {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--charcoal-light);
+    }
+    
+    .pricing-desc {
+      font-size: 0.9375rem;
+      color: var(--charcoal-mid);
+      margin-bottom: var(--space-lg);
+      padding-bottom: var(--space-lg);
+      border-bottom: 1px solid var(--gold-light);
+    }
+    
+    .pricing-features {
+      list-style: none;
+      margin-bottom: var(--space-xl);
+      flex: 1;
+    }
+    
+    .pricing-features li {
+      font-size: 0.9375rem;
+      color: var(--charcoal-mid);
+      padding: var(--space-sm) 0;
+      border-bottom: 1px solid var(--gold-light);
+    }
+    
+    .pricing-features li:last-child {
+      border-bottom: none;
+    }
+    
+    /* ============================================
+       NEWSLETTER
+    ============================================ */
+    
+    .newsletter {
+      padding: var(--space-3xl) var(--space-xl);
+      background: var(--green-deep);
+    }
+    
+    .newsletter-inner {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .newsletter h2 {
+      font-size: 1.75rem;
+      color: var(--cream);
+      margin-bottom: var(--space-md);
+    }
+    
+    .newsletter p {
+      font-size: 1rem;
+      color: var(--gold-light);
+      margin-bottom: var(--space-xl);
+    }
+    
+    .newsletter-form {
+      display: flex;
+      gap: var(--space-sm);
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    
+    .newsletter-input {
+      flex: 1;
+      font-family: var(--font-sans);
+      font-size: 0.9375rem;
+      padding: var(--space-sm) var(--space-md);
+      border: 1px solid var(--gold-light);
+      background: var(--cream);
+    }
+    
+    .newsletter-input:focus {
+      outline: none;
+      border-color: var(--gold-warm);
+    }
+    
+    .newsletter .btn-primary {
+      background: var(--gold-warm);
+      border-color: var(--gold-warm);
+      color: var(--charcoal-dark);
+    }
+    
+    .newsletter .btn-primary:hover {
+      background: var(--gold-muted);
+      border-color: var(--gold-muted);
+    }
+    
+    /* ============================================
+       BLOG POST
+    ============================================ */
+    
+    .blog-layout {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: var(--space-2xl);
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: var(--space-3xl) var(--space-xl);
+    }
+    
+    @media (max-width: 800px) {
+      .blog-layout { 
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .blog-content h1 {
+      font-size: 2.5rem;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-md);
+    }
+    
+    .blog-meta {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      color: var(--charcoal-light);
+      margin-bottom: var(--space-xl);
+    }
+    
+    .blog-content p {
+      font-size: 1.0625rem;
+      line-height: 1.8;
+      color: var(--charcoal-mid);
+      margin-bottom: var(--space-lg);
+    }
+    
+    .blog-content h2 {
+      font-size: 1.5rem;
+      margin-top: var(--space-xl);
+      margin-bottom: var(--space-md);
+    }
+    
+    .blog-sidebar {
+      border-left: 1px solid var(--gold-light);
+      padding-left: var(--space-xl);
+    }
+    
+    .sidebar-section {
+      margin-bottom: var(--space-xl);
+    }
+    
+    .sidebar-title {
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--charcoal-light);
+      margin-bottom: var(--space-md);
+      padding-bottom: var(--space-sm);
+      border-bottom: 1px solid var(--gold-light);
+    }
+    
+    .sidebar-links {
+      list-style: none;
+    }
+    
+    .sidebar-links li {
+      margin-bottom: var(--space-sm);
+    }
+    
+    .sidebar-links a {
+      font-size: 0.9375rem;
+    }
+    
+    /* ============================================
+       CASE STUDY
+    ============================================ */
+    
+    .case-study {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: var(--space-3xl) var(--space-xl);
+    }
+    
+    .case-hero {
+      margin-bottom: var(--space-2xl);
+    }
+    
+    .case-client {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold-muted);
+      margin-bottom: var(--space-sm);
+    }
+    
+    .case-hero h1 {
+      font-size: 2.5rem;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-lg);
+    }
+    
+    .case-intro {
+      font-size: 1.25rem;
+      line-height: 1.7;
+      color: var(--charcoal-mid);
+    }
+    
+    .case-section {
+      margin-bottom: var(--space-2xl);
+    }
+    
+    .case-section h2 {
+      font-size: 1.25rem;
+      margin-bottom: var(--space-md);
+      padding-bottom: var(--space-sm);
+      border-bottom: 1px solid var(--gold-light);
+    }
+    
+    .case-section p {
+      font-size: 1.0625rem;
+      line-height: 1.8;
+      color: var(--charcoal-mid);
+      margin-bottom: var(--space-md);
+    }
+    
+    .case-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+      padding: var(--space-xl);
+      border: 1px solid var(--charcoal-dark);
+      margin-top: var(--space-lg);
+    }
+    
+    .stat-value {
+      font-family: var(--font-mono);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--green-rich);
+    }
+    
+    .stat-label {
+      font-size: 0.875rem;
+      color: var(--charcoal-light);
+    }
+    
+    /* ============================================
+       TEAM
+    ============================================ */
+    
+    .team {
+      padding: var(--space-3xl) var(--space-xl);
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .team-header {
+      margin-bottom: var(--space-2xl);
+    }
+    
+    .team-header h2 {
+      font-size: 2rem;
+      margin-bottom: var(--space-md);
+    }
+    
+    .team-header p {
+      font-size: 1.0625rem;
+      color: var(--charcoal-mid);
+      max-width: 50ch;
+    }
+    
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-xl);
+    }
+    
+    @media (max-width: 800px) {
+      .team-grid { grid-template-columns: 1fr; }
+    }
+    
+    .team-member {
+      text-align: center;
+    }
+    
+    .member-avatar {
+      width: 120px;
+      height: 120px;
+      background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 4px,
+        var(--charcoal-light) 4px,
+        var(--charcoal-light) 4.5px
+      );
+      background-color: var(--cream);
+      border: 1px solid var(--charcoal-dark);
+      margin: 0 auto var(--space-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--charcoal-mid);
+    }
+    
+    .member-name {
+      font-family: var(--font-mono);
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: var(--space-xs);
+    }
+    
+    .member-role {
+      font-size: 0.875rem;
+      color: var(--gold-muted);
+      margin-bottom: var(--space-md);
+    }
+    
+    .member-bio {
+      font-size: 0.9375rem;
+      color: var(--charcoal-mid);
+      line-height: 1.7;
+    }
+    
+    /* ============================================
+       DOCS
+    ============================================ */
+    
+    .docs-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      min-height: 100vh;
+    }
+    
+    @media (max-width: 800px) {
+      .docs-layout { grid-template-columns: 1fr; }
+    }
+    
+    .docs-nav {
+      border-right: 1px solid var(--gold-light);
+      padding: var(--space-xl);
+      background: rgba(232, 213, 163, 0.08);
+    }
+    
+    .docs-nav-title {
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--charcoal-dark);
+      margin-bottom: var(--space-lg);
+    }
+    
+    .docs-nav-section {
+      margin-bottom: var(--space-lg);
+    }
+    
+    .docs-nav-heading {
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--charcoal-light);
+      margin-bottom: var(--space-sm);
+    }
+    
+    .docs-nav-links {
+      list-style: none;
+    }
+    
+    .docs-nav-links li {
+      margin-bottom: var(--space-xs);
+    }
+    
+    .docs-nav-links a {
+      font-size: 0.9375rem;
+      text-decoration: none;
+      color: var(--charcoal-mid);
+    }
+    
+    .docs-nav-links a:hover {
+      color: var(--green-rich);
+    }
+    
+    .docs-nav-links a.active {
+      color: var(--green-rich);
+      font-weight: 500;
+    }
+    
+    .docs-content {
+      padding: var(--space-2xl);
+      max-width: 720px;
+    }
+    
+    .docs-content h1 {
+      font-size: 2rem;
+      margin-bottom: var(--space-md);
+    }
+    
+    .docs-content p {
+      font-size: 1.0625rem;
+      line-height: 1.8;
+      color: var(--charcoal-mid);
+      margin-bottom: var(--space-lg);
+    }
+    
+    .docs-content h2 {
+      font-size: 1.375rem;
+      margin-top: var(--space-xl);
+      margin-bottom: var(--space-md);
+    }
+    
+    .docs-content code {
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      background: rgba(45, 90, 61, 0.08);
+      padding: 0.1em 0.4em;
+      border: 1px solid var(--gold-light);
+    }
+    
+    .docs-content pre {
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      background: var(--charcoal-dark);
+      color: var(--cream);
+      padding: var(--space-lg);
+      overflow-x: auto;
+      margin-bottom: var(--space-lg);
+    }
+    
+    .docs-content pre code {
+      background: none;
+      border: none;
+      padding: 0;
+      color: inherit;
+    }
+    
+    /* Site nav */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      background: var(--cream);
+      border-bottom: 1px solid var(--charcoal-dark);
+      padding: var(--space-md) var(--space-xl);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+    }
+    
+    .site-nav-brand {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--charcoal-dark);
+      text-decoration: none;
+    }
+    
+    .site-nav-brand:hover {
+      color: var(--green-rich);
+    }
+    
+    .site-nav-links {
+      display: flex;
+      gap: var(--space-lg);
+    }
+    
+    .site-nav-links a {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      color: var(--charcoal-mid);
+      text-decoration: none;
+    }
+    
+    .site-nav-links a:hover {
+      color: var(--green-rich);
+    }
+    
+    .site-nav-links a.active {
+      color: var(--charcoal-dark);
+      border-bottom: 2px solid var(--green-rich);
+      padding-bottom: 2px;
+    }
+    
+    /* Page section nav */
+    .page-nav {
+      display: flex;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+      padding: var(--space-md) var(--space-xl);
+      background: rgba(232, 213, 163, 0.15);
+      border-bottom: 1px solid var(--gold-light);
+    }
+    
+    .page-nav a {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--charcoal-mid);
+      text-decoration: none;
+    }
+    
+    .page-nav a:hover {
+      color: var(--green-rich);
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="index.html" class="site-nav-brand">Latent Intent</a>
+    <div class="site-nav-links">
+      <a href="index.html">Design System</a>
+      <a href="layouts.html" class="active">Layouts</a>
+    </div>
+  </nav>
+
+  <!-- Section Nav -->
+  <nav class="page-nav">
+    <a href="#hero">Hero</a>
+    <a href="#features">Features</a>
+    <a href="#testimonial">Testimonial</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#newsletter">Newsletter</a>
+    <a href="#blog">Blog</a>
+    <a href="#case-study">Case Study</a>
+    <a href="#team">Team</a>
+    <a href="#docs">Docs</a>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero" class="layout-section">
+    <p class="layout-label">Hero</p>
+    <div class="hero">
+      <p class="hero-eyebrow">AI-Forward Design Studio</p>
+      <h1>Design that reveals what matters</h1>
+      <p class="hero-sub">We combine Scandinavian craft with machine intelligence to create interfaces that feel inevitable—where every element earns its place.</p>
+      <div class="hero-cta">
+        <a href="#" class="btn btn-primary">View Our Work</a>
+        <a href="#" class="btn btn-secondary">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features" class="layout-section">
+    <p class="layout-label">Features</p>
+    <div class="features">
+      <div class="features-header">
+        <h2>How We Work</h2>
+        <p>Three principles guide every project, from research through delivery.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">[→]</div>
+          <h3>Clarity Over Decoration</h3>
+          <p>Ornament must never obscure function. We strip away the unnecessary until only meaning remains.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">[◉]</div>
+          <h3>Warmth Through Precision</h3>
+          <p>Technical rigor should feel human. Our systems are exacting but never cold.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">[–]</div>
+          <h3>Restraint as Generosity</h3>
+          <p>By showing less, we respect attention. Every element present is a gift, not a demand.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section id="testimonial" class="layout-section">
+    <p class="layout-label">Testimonial</p>
+    <div class="testimonial">
+      <div class="testimonial-inner">
+        <p class="testimonial-quote">"Latent Intent understood our brand before we did. They surfaced patterns in our work we'd never seen—and built a system that makes those patterns repeatable."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">EL</div>
+          <div>
+            <p class="testimonial-name">Erik Lindqvist</p>
+            <p class="testimonial-role">Creative Director, Norr Studio</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="layout-section">
+    <p class="layout-label">Pricing</p>
+    <div class="pricing">
+      <div class="pricing-header">
+        <h2>Engagement Models</h2>
+      </div>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <p class="pricing-tier">Starter</p>
+          <p class="pricing-price">$8k <span>/project</span></p>
+          <p class="pricing-desc">For focused, single-deliverable work.</p>
+          <ul class="pricing-features">
+            <li>Design audit & recommendations</li>
+            <li>Component library (up to 20)</li>
+            <li>Documentation</li>
+            <li>2 revision rounds</li>
+          </ul>
+          <a href="#" class="btn btn-secondary">Get Started</a>
+        </div>
+        <div class="pricing-card featured">
+          <p class="pricing-tier">Professional</p>
+          <p class="pricing-price">$24k <span>/project</span></p>
+          <p class="pricing-desc">Full design system with implementation support.</p>
+          <ul class="pricing-features">
+            <li>Everything in Starter</li>
+            <li>Complete design system</li>
+            <li>Developer handoff</li>
+            <li>4 weeks implementation support</li>
+          </ul>
+          <a href="#" class="btn btn-primary">Get Started</a>
+        </div>
+        <div class="pricing-card">
+          <p class="pricing-tier">Enterprise</p>
+          <p class="pricing-price">Custom</p>
+          <p class="pricing-desc">Ongoing partnership for complex organizations.</p>
+          <ul class="pricing-features">
+            <li>Dedicated team</li>
+            <li>Multi-product systems</li>
+            <li>AI-assisted tooling</li>
+            <li>Quarterly strategy reviews</li>
+          </ul>
+          <a href="#" class="btn btn-secondary">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section id="newsletter" class="layout-section">
+    <p class="layout-label">Newsletter</p>
+    <div class="newsletter">
+      <div class="newsletter-inner">
+        <h2>Stay in the loop</h2>
+        <p>Occasional thoughts on design systems, AI, and the intersection of craft and computation.</p>
+        <form class="newsletter-form">
+          <input type="email" class="newsletter-input" placeholder="you@example.com">
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG POST -->
+  <section id="blog" class="layout-section">
+    <p class="layout-label">Blog Post</p>
+    <div class="blog-layout">
+      <article class="blog-content">
+        <h1>The Quiet Interface</h1>
+        <p class="blog-meta">14 Jan 2026 · 6 min read</p>
+        <p>The best interfaces are the ones you don't notice. They guide without insisting, inform without overwhelming. This is the principle we return to again and again: quietness as a design goal.</p>
+        <p>It sounds simple, perhaps even passive. But achieving quietness requires active decisions at every level—from information architecture to the weight of a border.</p>
+        <h2>Subtractive Design</h2>
+        <p>Most design processes are additive. We start with requirements and build up: add a header, add navigation, add a sidebar, add a footer. Each addition solves a problem, but together they create noise.</p>
+        <p>Subtractive design inverts this. We start with everything a page could contain, then remove what doesn't serve the moment. What remains is essential.</p>
+      </article>
+      <aside class="blog-sidebar">
+        <div class="sidebar-section">
+          <p class="sidebar-title">In This Article</p>
+          <ul class="sidebar-links">
+            <li><a href="#">Subtractive Design</a></li>
+            <li><a href="#">The Attention Budget</a></li>
+            <li><a href="#">Practical Techniques</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-section">
+          <p class="sidebar-title">Related</p>
+          <ul class="sidebar-links">
+            <li><a href="#">Warmth in Precision</a></li>
+            <li><a href="#">Designing with Latent Space</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- CASE STUDY -->
+  <section id="case-study" class="layout-section">
+    <p class="layout-label">Case Study</p>
+    <div class="case-study">
+      <div class="case-hero">
+        <p class="case-client">Norr Studio</p>
+        <h1>Bringing coherence to a decade of craft</h1>
+        <p class="case-intro">Norr Studio had built beautiful furniture for ten years, but their digital presence was fragmented. We unified their brand language across web, print, and product.</p>
+      </div>
+      <div class="case-section">
+        <h2>Challenge</h2>
+        <p>With products across three collections and a website that had evolved organically, Norr's brand felt inconsistent. Customers couldn't articulate what made Norr distinct—even when they loved the work.</p>
+      </div>
+      <div class="case-section">
+        <h2>Solution</h2>
+        <p>We audited every touchpoint, from product photography to invoice design. Using machine learning, we identified visual patterns that appeared in their most successful pieces—subtle ratios and color relationships that defined "Norr-ness" without being explicitly codified.</p>
+        <p>These patterns became the foundation of a new design system: typography, spacing, and color derived from the furniture itself.</p>
+      </div>
+      <div class="case-section">
+        <h2>Results</h2>
+        <div class="case-stats">
+          <div>
+            <p class="stat-value">+34%</p>
+            <p class="stat-label">Brand recognition</p>
+          </div>
+          <div>
+            <p class="stat-value">2.1×</p>
+            <p class="stat-label">Time on site</p>
+          </div>
+          <div>
+            <p class="stat-value">+28%</p>
+            <p class="stat-label">Direct inquiries</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team" class="layout-section">
+    <p class="layout-label">Team</p>
+    <div class="team">
+      <div class="team-header">
+        <h2>The People</h2>
+        <p>A small team with deep roots in Scandinavian design and computational thinking.</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-member">
+          <div class="member-avatar">AH</div>
+          <p class="member-name">Anna Holm</p>
+          <p class="member-role">Founder & Design Director</p>
+          <p class="member-bio">Trained at Konstfack, worked at Claesson Koivisto Rune before founding Latent Intent.</p>
+        </div>
+        <div class="team-member">
+          <div class="member-avatar">ML</div>
+          <p class="member-name">Marcus Lindgren</p>
+          <p class="member-role">Technical Director</p>
+          <p class="member-bio">Former ML researcher at KTH. Believes computation should amplify intuition, not replace it.</p>
+        </div>
+        <div class="team-member">
+          <div class="member-avatar">SK</div>
+          <p class="member-name">Sofia Karlsson</p>
+          <p class="member-role">Systems Designer</p>
+          <p class="member-bio">Obsessed with the space between components—where systems become coherent or fall apart.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOCS -->
+  <section id="docs" class="layout-section">
+    <p class="layout-label">Documentation</p>
+    <div class="docs-layout">
+      <nav class="docs-nav">
+        <p class="docs-nav-title">Documentation</p>
+        <div class="docs-nav-section">
+          <p class="docs-nav-heading">Getting Started</p>
+          <ul class="docs-nav-links">
+            <li><a href="#" class="active">Installation</a></li>
+            <li><a href="#">Quick Start</a></li>
+            <li><a href="#">Configuration</a></li>
+          </ul>
+        </div>
+        <div class="docs-nav-section">
+          <p class="docs-nav-heading">Components</p>
+          <ul class="docs-nav-links">
+            <li><a href="#">Buttons</a></li>
+            <li><a href="#">Forms</a></li>
+            <li><a href="#">Cards</a></li>
+            <li><a href="#">Tables</a></li>
+          </ul>
+        </div>
+        <div class="docs-nav-section">
+          <p class="docs-nav-heading">Patterns</p>
+          <ul class="docs-nav-links">
+            <li><a href="#">Layouts</a></li>
+            <li><a href="#">Navigation</a></li>
+            <li><a href="#">Data Display</a></li>
+          </ul>
+        </div>
+      </nav>
+      <main class="docs-content">
+        <h1>Installation</h1>
+        <p>Get started with the Latent Intent design system in your project. The system is distributed as a single CSS file with optional JavaScript for interactive components.</p>
+        <h2>Package Manager</h2>
+        <p>Install via npm or yarn:</p>
+        <pre><code>npm install @latent-intent/design-system</code></pre>
+        <p>Then import in your stylesheet or JavaScript entry point:</p>
+        <pre><code>import '@latent-intent/design-system/dist/styles.css';</code></pre>
+        <h2>CDN</h2>
+        <p>For quick prototyping, include directly from our CDN:</p>
+        <pre><code>&lt;link rel="stylesheet" href="https://cdn.latent-intent.com/v1/styles.css"&gt;</code></pre>
+      </main>
+    </div>
+  </section>
+
+</body>
+</html>

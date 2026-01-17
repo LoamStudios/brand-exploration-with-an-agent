@@ -1,0 +1,19 @@
+[tools]
+node = "latest"
+
+[tasks.dev]
+description = "Run Tailwind CSS build and Caddy server"
+depends = ["install"]
+run = """
+npx tailwindcss -i assets/app.css -o assets/dist.css --watch &
+caddy file-server --listen :3000 --root .
+"""
+
+[tasks.build]
+description = "Build Tailwind CSS for production"
+depends = ["install"]
+run = "npx tailwindcss -i assets/app.css -o assets/dist.css --minify"
+
+[tasks.install]
+description = "Install dependencies"
+run = "npm install"

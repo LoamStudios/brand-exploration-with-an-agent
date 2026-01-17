@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latent Intent – Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Background */
+      --cream: #FAF8F5;
+      
+      /* Verdant English Countryside Greens */
+      --green-rich: #2D5A3D;
+      --green-deep: #1E3D29;
+      
+      /* Rich Golds */
+      --gold-warm: #C9A227;
+      --gold-muted: #B8963E;
+      --gold-light: #E8D5A3;
+      
+      /* Charcoals (darkened from green hue) */
+      --charcoal-dark: #1A2B1F;
+      --charcoal-mid: #3D4A40;
+      --charcoal-light: #5C6960;
+      
+      /* Typography Scale */
+      --font-sans: 'Work Sans', sans-serif;
+      --font-mono: 'Fira Mono', monospace;
+      
+      /* Spacing Scale */
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+      --space-3xl: 6rem;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: var(--font-sans);
+      background: var(--cream);
+      color: var(--charcoal-dark);
+      min-height: 100vh;
+      padding: var(--space-2xl);
+      line-height: 1.6;
+    }
+    
+    /* ============================================
+       TYPOGRAPHY
+    ============================================ */
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--charcoal-dark);
+    }
+    
+    h1 {
+      font-size: 3rem;
+      letter-spacing: -0.03em;
+      margin-bottom: var(--space-xl);
+    }
+    
+    h2 {
+      font-size: 2.25rem;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-lg);
+    }
+    
+    h3 {
+      font-size: 1.75rem;
+      letter-spacing: -0.01em;
+      margin-bottom: var(--space-lg);
+    }
+    
+    h4 {
+      font-size: 1.375rem;
+      margin-bottom: var(--space-md);
+    }
+    
+    h5 {
+      font-size: 1.125rem;
+      margin-bottom: var(--space-md);
+    }
+    
+    h6 {
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: var(--space-sm);
+    }
+    
+    p {
+      font-size: 1.0625rem;
+      line-height: 1.8;
+      margin-bottom: var(--space-lg);
+      color: var(--charcoal-mid);
+    }
+    
+    .text-large {
+      font-size: 1.25rem;
+      line-height: 1.7;
+    }
+    
+    .text-small {
+      font-size: 0.9375rem;
+    }
+    
+    .text-caption {
+      font-size: 0.8125rem;
+      color: var(--charcoal-light);
+    }
+    
+    .mono {
+      font-family: var(--font-mono);
+    }
+    
+    /* ============================================
+       LINKS
+    ============================================ */
+    
+    a {
+      color: var(--green-rich);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      transition: color 0.15s ease, text-decoration-color 0.15s ease;
+    }
+    
+    a:hover {
+      color: var(--green-deep);
+      text-decoration-color: var(--gold-warm);
+    }
+    
+    /* ============================================
+       BUTTONS
+    ============================================ */
+    
+    .btn {
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      text-decoration: none;
+      display: inline-block;
+      border: 2px solid transparent;
+    }
+    
+    .btn-primary {
+      background: var(--green-rich);
+      color: var(--cream);
+      border-color: var(--green-rich);
+    }
+    
+    .btn-primary:hover {
+      background: var(--green-deep);
+      border-color: var(--green-deep);
+      color: var(--cream);
+      text-decoration: none;
+    }
+    
+    .btn-secondary {
+      background: transparent;
+      color: var(--green-rich);
+      border-color: var(--green-rich);
+    }
+    
+    .btn-secondary:hover {
+      background: var(--green-rich);
+      color: var(--cream);
+      text-decoration: none;
+    }
+    
+    /* ============================================
+       LAYOUT UTILITIES
+    ============================================ */
+    
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    
+    .section {
+      margin-bottom: var(--space-3xl);
+    }
+    
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--charcoal-light);
+      margin-bottom: var(--space-lg);
+      padding-bottom: var(--space-sm);
+      border-bottom: 1px solid var(--gold-light);
+    }
+    
+    .flex-row {
+      display: flex;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    
+    .divider {
+      height: 1px;
+      background: var(--gold-light);
+      margin: var(--space-3xl) 0;
+    }
+    
+    /* ============================================
+       TYPOGRAPHY SPECIMEN
+    ============================================ */
+    
+    .type-specimen {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+      margin-bottom: var(--space-xl);
+    }
+    
+    .type-row {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-lg);
+    }
+    
+    .type-label {
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      color: var(--charcoal-light);
+      min-width: 60px;
+      flex-shrink: 0;
+    }
+    
+    .type-sample {
+      flex: 1;
+    }
+    
+    .type-sample h1,
+    .type-sample h2,
+    .type-sample h3,
+    .type-sample h4,
+    .type-sample h5,
+    .type-sample h6 {
+      margin-bottom: 0;
+    }
+    
+    /* ============================================
+       SITE NAV
+    ============================================ */
+    
+    .site-nav {
+      position: sticky;
+      top: 0;
+      background: var(--cream);
+      border-bottom: 1px solid var(--charcoal-dark);
+      padding: var(--space-md) var(--space-xl);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+    }
+    
+    .site-nav-brand {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--charcoal-dark);
+      text-decoration: none;
+    }
+    
+    .site-nav-brand:hover {
+      color: var(--green-rich);
+    }
+    
+    .site-nav-links {
+      display: flex;
+      gap: var(--space-lg);
+    }
+    
+    .site-nav-links a {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      color: var(--charcoal-mid);
+      text-decoration: none;
+    }
+    
+    .site-nav-links a:hover {
+      color: var(--green-rich);
+    }
+    
+    .site-nav-links a.active {
+      color: var(--charcoal-dark);
+      border-bottom: 2px solid var(--green-rich);
+      padding-bottom: 2px;
+    }
+    
+    /* ============================================
+       PATTERNS
+    ============================================ */
+    
+    .pattern-hatch-fine {
+      background-image: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 4px,
+        var(--charcoal-light) 4px,
+        var(--charcoal-light) 4.5px
+      );
+      background-color: var(--cream);
+    }
+    
+    .pattern-hatch-wide {
+      background-image: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 12px,
+        var(--charcoal-light) 12px,
+        var(--charcoal-light) 12.5px
+      );
+      background-color: var(--cream);
+    }
+    
+    .pattern-crosshatch {
+      background-image: 
+        repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 8px,
+          var(--charcoal-light) 8px,
+          var(--charcoal-light) 8.5px
+        ),
+        repeating-linear-gradient(
+          -45deg,
+          transparent,
+          transparent 8px,
+          var(--charcoal-light) 8px,
+          var(--charcoal-light) 8.5px
+        );
+      background-color: var(--cream);
+    }
+    
+    .pattern-horizontal {
+      background-image: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 6px,
+        var(--charcoal-light) 6px,
+        var(--charcoal-light) 6.5px
+      );
+      background-color: var(--cream);
+    }
+    
+    .pattern-steep {
+      background-image: repeating-linear-gradient(
+        -60deg,
+        transparent,
+        transparent 10px,
+        var(--charcoal-light) 10px,
+        var(--charcoal-light) 10.5px
+      );
+      background-color: var(--cream);
+    }
+    
+    .pattern-shallow {
+      background-image: repeating-linear-gradient(
+        -15deg,
+        transparent,
+        transparent 14px,
+        var(--charcoal-light) 14px,
+        var(--charcoal-light) 14.5px
+      );
+      background-color: var(--cream);
+    }
+    
+    /* Light variants using gold */
+    .pattern-hatch-gold {
+      background-image: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 8px,
+        var(--gold-light) 8px,
+        var(--gold-light) 9px
+      );
+      background-color: var(--cream);
+    }
+    
+    /* Pattern specimen */
+    .pattern-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+    }
+    
+    .pattern-swatch {
+      height: 100px;
+      border: 1px solid var(--charcoal-dark);
+    }
+    
+    .pattern-label {
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      color: var(--charcoal-light);
+      margin-top: var(--space-sm);
+    }
+    
+    /* ============================================
+       ALERTS
+    ============================================ */
+    
+    .alert {
+      font-size: 0.9375rem;
+      padding: var(--space-md) var(--space-lg);
+      border: 1px solid;
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-md);
+    }
+    
+    .alert-icon {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    
+    .alert-info {
+      border-color: var(--charcoal-mid);
+      background: rgba(61, 74, 64, 0.06);
+      color: var(--charcoal-dark);
+    }
+    
+    .alert-info .alert-icon {
+      color: var(--charcoal-mid);
+    }
+    
+    .alert-success {
+      border-color: var(--green-rich);
+      background: rgba(45, 90, 61, 0.08);
+      color: var(--charcoal-dark);
+    }
+    
+    .alert-success .alert-icon {
+      color: var(--green-rich);
+    }
+    
+    .alert-warning {
+      border-color: var(--gold-warm);
+      background: rgba(201, 162, 39, 0.1);
+      color: var(--charcoal-dark);
+    }
+    
+    .alert-warning .alert-icon {
+      color: var(--gold-muted);
+    }
+    
+    .alert-error {
+      border-color: #8B3A3A;
+      background: rgba(139, 58, 58, 0.08);
+      color: var(--charcoal-dark);
+    }
+    
+    .alert-error .alert-icon {
+      color: #8B3A3A;
+    }
+    
+    /* ============================================
+       FORM ELEMENTS
+    ============================================ */
+    
+    .form-group {
+      margin-bottom: var(--space-lg);
+    }
+    
+    .form-label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--charcoal-dark);
+      margin-bottom: var(--space-sm);
+    }
+    
+    .form-hint {
+      font-size: 0.8125rem;
+      color: var(--charcoal-light);
+      margin-top: var(--space-xs);
+    }
+    
+    .form-required {
+      color: var(--gold-warm);
+    }
+    
+    /* Text Inputs */
+    .input {
+      font-family: var(--font-sans);
+      font-size: 0.9375rem;
+      padding: var(--space-sm) var(--space-md);
+      border: 1px solid var(--charcoal-mid);
+      background: var(--cream);
+      color: var(--charcoal-dark);
+      width: 100%;
+      max-width: 400px;
+      transition: border-color 0.15s ease;
+    }
+    
+    .input:focus {
+      outline: none;
+      border-color: var(--green-rich);
+    }
+    
+    .input::placeholder {
+      color: var(--charcoal-light);
+    }
+    
+    .input-error {
+      border-color: #8B3A3A;
+    }
+    
+    .input-success {
+      border-color: var(--green-rich);
+    }
+    
+    textarea.input {
+      min-height: 120px;
+      resize: vertical;
+      line-height: 1.6;
+    }
+    
+    /* Checkbox */
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      font-size: 0.9375rem;
+      color: var(--charcoal-dark);
+      cursor: pointer;
+    }
+    
+    .checkbox {
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border: 1px solid var(--charcoal-mid);
+      background: var(--cream);
+      cursor: pointer;
+      flex-shrink: 0;
+      position: relative;
+    }
+    
+    .checkbox:checked {
+      background: var(--green-rich);
+      border-color: var(--green-rich);
+    }
+    
+    .checkbox:checked::after {
+      content: '✓';
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--cream);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    
+    .checkbox:focus {
+      outline: 2px solid var(--gold-light);
+      outline-offset: 2px;
+    }
+    
+    /* Radio */
+    .radio-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    
+    .radio-label {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      font-size: 0.9375rem;
+      color: var(--charcoal-dark);
+      cursor: pointer;
+    }
+    
+    .radio {
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border: 1px solid var(--charcoal-mid);
+      border-radius: 50%;
+      background: var(--cream);
+      cursor: pointer;
+      flex-shrink: 0;
+      position: relative;
+    }
+    
+    .radio:checked {
+      border-color: var(--green-rich);
+    }
+    
+    .radio:checked::after {
+      content: '';
+      width: 10px;
+      height: 10px;
+      background: var(--green-rich);
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    
+    .radio:focus {
+      outline: 2px solid var(--gold-light);
+      outline-offset: 2px;
+    }
+    
+    /* Toggle */
+    .toggle-label {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      font-size: 0.9375rem;
+      color: var(--charcoal-dark);
+      cursor: pointer;
+    }
+    
+    .toggle {
+      appearance: none;
+      width: 44px;
+      height: 24px;
+      border: 1px solid var(--charcoal-mid);
+      background: var(--cream);
+      cursor: pointer;
+      position: relative;
+      flex-shrink: 0;
+      transition: all 0.15s ease;
+    }
+    
+    .toggle::after {
+      content: '';
+      width: 18px;
+      height: 18px;
+      background: var(--charcoal-mid);
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      transition: all 0.15s ease;
+    }
+    
+    .toggle:checked {
+      background: var(--green-rich);
+      border-color: var(--green-rich);
+    }
+    
+    .toggle:checked::after {
+      background: var(--cream);
+      left: 22px;
+    }
+    
+    .toggle:focus {
+      outline: 2px solid var(--gold-light);
+      outline-offset: 2px;
+    }
+    
+    /* Select */
+    .select {
+      font-family: var(--font-sans);
+      font-size: 0.9375rem;
+      padding: var(--space-sm) var(--space-md);
+      padding-right: var(--space-xl);
+      border: 1px solid var(--charcoal-mid);
+      background: var(--cream);
+      color: var(--charcoal-dark);
+      width: 100%;
+      max-width: 400px;
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%233D4A40' d='M2 4l4 4 4-4'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right var(--space-md) center;
+    }
+    
+    .select:focus {
+      outline: none;
+      border-color: var(--green-rich);
+    }
+    
+    /* Form row for inline fields */
+    .form-row {
+      display: flex;
+      gap: var(--space-lg);
+      flex-wrap: wrap;
+    }
+    
+    .form-row .form-group {
+      flex: 1;
+      min-width: 200px;
+    }
+    
+    /* ============================================
+       CARDS
+    ============================================ */
+    
+    .card {
+      border: 1px solid var(--charcoal-dark);
+      padding: var(--space-lg);
+      background: var(--cream);
+      max-width: 400px;
+    }
+    
+    .card-date {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--charcoal-light);
+      margin-bottom: var(--space-sm);
+    }
+    
+    .card-title {
+      font-size: 1.125rem;
+      margin-bottom: var(--space-sm);
+    }
+    
+    .card-title a {
+      color: var(--charcoal-dark);
+      text-decoration: none;
+    }
+    
+    .card-title a:hover {
+      color: var(--green-rich);
+    }
+    
+    .card-snippet {
+      font-size: 0.9375rem;
+      color: var(--charcoal-mid);
+      margin-bottom: 0;
+    }
+    
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-lg);
+    }
+    
+    .card-grid .card {
+      max-width: none;
+    }
+    
+    /* ============================================
+       INDEX TABLE
+    ============================================ */
+    
+    .index-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9375rem;
+    }
+    
+    .index-table th {
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--charcoal-light);
+      text-align: left;
+      padding: var(--space-sm) 0;
+      border-bottom: 1px solid var(--charcoal-dark);
+    }
+    
+    .index-table td {
+      padding: var(--space-md) 0;
+      border-bottom: 1px solid var(--gold-light);
+      color: var(--charcoal-mid);
+    }
+    
+    .index-table td:last-child {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      color: var(--charcoal-light);
+      text-align: right;
+      white-space: nowrap;
+    }
+    
+    .index-table tbody tr:hover {
+      background: rgba(45, 90, 61, 0.04);
+    }
+    
+    /* ============================================
+       CALLOUT
+    ============================================ */
+    
+    .callout {
+      border-left: 3px solid var(--gold-warm);
+      padding: var(--space-lg);
+      padding-left: var(--space-xl);
+      background: rgba(232, 213, 163, 0.15);
+    }
+    
+    .callout p {
+      font-size: 1.125rem;
+      font-style: italic;
+      color: var(--charcoal-dark);
+      margin-bottom: var(--space-sm);
+      line-height: 1.7;
+    }
+    
+    .callout cite {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      font-style: normal;
+      color: var(--charcoal-light);
+    }
+    
+    /* ============================================
+       EMPTY STATE
+    ============================================ */
+    
+    .empty-state {
+      border: 1px dashed var(--charcoal-light);
+      padding: var(--space-2xl);
+      text-align: center;
+    }
+    
+    .empty-state-message {
+      font-family: var(--font-mono);
+      font-size: 0.9375rem;
+      color: var(--charcoal-mid);
+      margin-bottom: var(--space-xs);
+    }
+    
+    .empty-state-hint {
+      font-size: 0.875rem;
+      color: var(--charcoal-light);
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="index.html" class="site-nav-brand">Latent Intent</a>
+    <div class="site-nav-links">
+      <a href="index.html" class="active">Design System</a>
+      <a href="layouts.html">Layouts</a>
+    </div>
+  </nav>
+  
+  <div class="container" style="padding-top: var(--space-2xl);">
+    
+    <!-- Typography Scale -->
+    <section class="section">
+      <p class="section-label">Typography Scale</p>
+      
+      <div class="type-specimen">
+        <div class="type-row">
+          <span class="type-label">h1</span>
+          <div class="type-sample"><h1>Latent Intent</h1></div>
+        </div>
+        <div class="type-row">
+          <span class="type-label">h2</span>
+          <div class="type-sample"><h2>Design Systems</h2></div>
+        </div>
+        <div class="type-row">
+          <span class="type-label">h3</span>
+          <div class="type-sample"><h3>Brand Foundations</h3></div>
+        </div>
+        <div class="type-row">
+          <span class="type-label">h4</span>
+          <div class="type-sample"><h4>Color & Typography</h4></div>
+        </div>
+        <div class="type-row">
+          <span class="type-label">h5</span>
+          <div class="type-sample"><h5>Component Library</h5></div>
+        </div>
+        <div class="type-row">
+          <span class="type-label">h6</span>
+          <div class="type-sample"><h6>Documentation</h6></div>
+        </div>
+      </div>
+      
+      <div class="type-specimen">
+        <div class="type-row">
+          <span class="type-label">large</span>
+          <div class="type-sample"><p class="text-large" style="margin-bottom: 0;">Body text for introductions and emphasis.</p></div>
+        </div>
+        <div class="type-row">
+          <span class="type-label">default</span>
+          <div class="type-sample"><p style="margin-bottom: 0;">Standard body text for prose and general content.</p></div>
+        </div>
+        <div class="type-row">
+          <span class="type-label">small</span>
+          <div class="type-sample"><p class="text-small" style="margin-bottom: 0;">Smaller text for secondary information.</p></div>
+        </div>
+        <div class="type-row">
+          <span class="type-label">caption</span>
+          <div class="type-sample"><p class="text-caption" style="margin-bottom: 0;">Captions, metadata, and supporting details.</p></div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Buttons -->
+    <section class="section">
+      <p class="section-label">Buttons</p>
+      
+      <div class="flex-row">
+        <button class="btn btn-primary">Primary Action</button>
+        <button class="btn btn-secondary">Secondary Action</button>
+      </div>
+    </section>
+    
+    <!-- Links -->
+    <section class="section">
+      <p class="section-label">Links</p>
+      
+      <p>
+        This is a paragraph with an <a href="#">inline link</a> that demonstrates the underline style. 
+        Links remain underlined at all times, with the underline shifting to gold on hover.
+      </p>
+    </section>
+    
+    <div class="divider"></div>
+    
+    <!-- Alerts -->
+    <section class="section">
+      <p class="section-label">Alerts</p>
+      
+      <div style="display: flex; flex-direction: column; gap: var(--space-md); max-width: 500px;">
+        <div class="alert alert-info">
+          <span class="alert-icon">i</span>
+          <span>New features are available. Check the changelog for details.</span>
+        </div>
+        <div class="alert alert-success">
+          <span class="alert-icon">✓</span>
+          <span>Your changes have been saved successfully.</span>
+        </div>
+        <div class="alert alert-warning">
+          <span class="alert-icon">!</span>
+          <span>This action cannot be undone. Please review before continuing.</span>
+        </div>
+        <div class="alert alert-error">
+          <span class="alert-icon">×</span>
+          <span>Unable to connect. Check your network and try again.</span>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Form Elements -->
+    <section class="section">
+      <p class="section-label">Text Inputs</p>
+      
+      <div class="form-group">
+        <label class="form-label">Email address <span class="form-required">*</span></label>
+        <input type="email" class="input" placeholder="you@example.com">
+        <p class="form-hint">We'll never share your email.</p>
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label">Message</label>
+        <textarea class="input" placeholder="Write something..."></textarea>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">With error</label>
+          <input type="text" class="input input-error" value="invalid@">
+        </div>
+        <div class="form-group">
+          <label class="form-label">With success</label>
+          <input type="text" class="input input-success" value="valid@example.com">
+        </div>
+      </div>
+    </section>
+    
+    <section class="section">
+      <p class="section-label">Selection</p>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Checkboxes</label>
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" class="checkbox" checked>
+              Design systems
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" class="checkbox">
+              Machine learning
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" class="checkbox">
+              Typography
+            </label>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">Radio buttons</label>
+          <div class="radio-group">
+            <label class="radio-label">
+              <input type="radio" name="plan" class="radio" checked>
+              Starter
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="plan" class="radio">
+              Professional
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="plan" class="radio">
+              Enterprise
+            </label>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label">Toggle</label>
+        <label class="toggle-label">
+          <input type="checkbox" class="toggle" checked>
+          Enable notifications
+        </label>
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label">Dropdown</label>
+        <select class="select">
+          <option>Select a category...</option>
+          <option>Design</option>
+          <option>Engineering</option>
+          <option>Research</option>
+        </select>
+      </div>
+    </section>
+    
+    <div class="divider"></div>
+    
+    <!-- Patterns -->
+    <section class="section">
+      <p class="section-label">Patterns</p>
+      
+      <div class="pattern-grid">
+        <div>
+          <div class="pattern-swatch pattern-hatch-fine"></div>
+          <p class="pattern-label">hatch-fine</p>
+        </div>
+        <div>
+          <div class="pattern-swatch pattern-hatch-wide"></div>
+          <p class="pattern-label">hatch-wide</p>
+        </div>
+        <div>
+          <div class="pattern-swatch pattern-crosshatch"></div>
+          <p class="pattern-label">crosshatch</p>
+        </div>
+        <div>
+          <div class="pattern-swatch pattern-horizontal"></div>
+          <p class="pattern-label">horizontal</p>
+        </div>
+        <div>
+          <div class="pattern-swatch pattern-steep"></div>
+          <p class="pattern-label">steep (-60°)</p>
+        </div>
+        <div>
+          <div class="pattern-swatch pattern-shallow"></div>
+          <p class="pattern-label">shallow (-15°)</p>
+        </div>
+        <div>
+          <div class="pattern-swatch pattern-hatch-gold"></div>
+          <p class="pattern-label">hatch-gold</p>
+        </div>
+      </div>
+    </section>
+    
+    <div class="divider"></div>
+    
+    <!-- Cards -->
+    <section class="section">
+      <p class="section-label">Article Card</p>
+      
+      <div class="card">
+        <p class="card-date">12 Jan 2026</p>
+        <h3 class="card-title"><a href="#">Designing with Latent Space</a></h3>
+        <p class="card-snippet">How we use machine learning embeddings to surface unexpected connections between visual elements—and why restraint matters more than ever.</p>
+      </div>
+    </section>
+    
+    <section class="section">
+      <p class="section-label">Card Grid</p>
+      
+      <div class="card-grid">
+        <div class="card">
+          <p class="card-date">08 Jan 2026</p>
+          <h3 class="card-title"><a href="#">The Quiet Interface</a></h3>
+          <p class="card-snippet">Why the best designs feel invisible, and how AI helps us remove what doesn't belong.</p>
+        </div>
+        <div class="card">
+          <p class="card-date">29 Dec 2025</p>
+          <h3 class="card-title"><a href="#">Warmth in Precision</a></h3>
+          <p class="card-snippet">Scandinavian craft meets computational rigor. A case study in furniture interface design.</p>
+        </div>
+        <div class="card">
+          <p class="card-date">15 Dec 2025</p>
+          <h3 class="card-title"><a href="#">Tools for Thought</a></h3>
+          <p class="card-snippet">Building software that extends human judgment rather than replacing it.</p>
+        </div>
+      </div>
+    </section>
+    
+    <section class="section">
+      <p class="section-label">Article Index</p>
+      
+      <table class="index-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="#">Designing with Latent Space</a></td>
+            <td>12 Jan 2026</td>
+          </tr>
+          <tr>
+            <td><a href="#">The Quiet Interface</a></td>
+            <td>08 Jan 2026</td>
+          </tr>
+          <tr>
+            <td><a href="#">Warmth in Precision</a></td>
+            <td>29 Dec 2025</td>
+          </tr>
+          <tr>
+            <td><a href="#">Tools for Thought</a></td>
+            <td>15 Dec 2025</td>
+          </tr>
+          <tr>
+            <td><a href="#">On Restraint</a></td>
+            <td>02 Dec 2025</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    
+    <section class="section">
+      <p class="section-label">Callout Block</p>
+      
+      <blockquote class="callout">
+        <p>"The best interface is one you don't notice. It should feel like an extension of thought, not an obstacle to it."</p>
+        <cite>— Founding Principles, 2019</cite>
+      </blockquote>
+    </section>
+    
+    <section class="section">
+      <p class="section-label">Empty State</p>
+      
+      <div class="empty-state">
+        <p class="empty-state-message">No articles yet</p>
+        <p class="empty-state-hint">Published work will appear here.</p>
+      </div>
+    </section>
+    
+    <div class="divider"></div>
+    
+    <!-- Prose Example -->
+    <article class="section">
+      <p class="section-label">Prose Layout</p>
+      
+      <h1>The Founding of Latent Intent</h1>
+      
+      <p class="text-large">
+        In the winter of 2019, three designers met in a converted warehouse in Copenhagen. 
+        They shared a conviction that artificial intelligence would reshape creative work—not 
+        by replacing human judgment, but by amplifying it.
+      </p>
+      
+      <h2>Scandinavian Roots</h2>
+      
+      <p>
+        The founders had each spent years studying under masters of Nordic design. They learned 
+        that true elegance emerges from restraint—that every element must earn its place. 
+        A chair should be only what a chair needs to be. A interface should present only what 
+        the moment requires.
+      </p>
+      
+      <p>
+        This philosophy would become the bedrock of <a href="#">Latent Intent</a>. Where others 
+        saw AI as a tool for generating more, faster, the founders saw an opportunity for 
+        generating less, better. Machine learning could surface the essential and quiet the noise.
+      </p>
+      
+      <h3>The Name</h3>
+      
+      <p>
+        "Latent Intent" came from a late-night conversation about neural networks. In machine 
+        learning, latent space is where meaning lives—compressed, abstract, waiting to be 
+        decoded. Intent is what separates craft from accident. Together, the words captured 
+        what the team believed design should be: purposeful meaning, waiting to emerge.
+      </p>
+      
+      <h4>First Principles</h4>
+      
+      <p>
+        The company established three principles that would guide every project. First, 
+        <strong>clarity over decoration</strong>—ornament must never obscure function. Second, 
+        <strong>warmth through precision</strong>—technical rigor should feel human, not cold. 
+        Third, <strong>restraint as generosity</strong>—by showing less, we respect the 
+        viewer's attention.
+      </p>
+      
+      <h5>The Early Work</h5>
+      
+      <p>
+        Their first commissions came from fellow Scandinavian firms—furniture makers, architects, 
+        publishers who understood the ethos. Each project was a laboratory. Could AI help identify 
+        which typeface carried the right emotional weight? Could machine vision reveal which 
+        layouts guided the eye most naturally?
+      </p>
+      
+      <h6>Recognition</h6>
+      
+      <p>
+        Within two years, the work began attracting international attention. Design publications 
+        noted something different in the studio's output: a quietness, a sense that each decision 
+        had been considered deeply. What they didn't see was the engine underneath—algorithms 
+        trained on centuries of design history, surfacing patterns invisible to the unaided eye.
+      </p>
+      
+      <div class="flex-row" style="margin-top: var(--space-xl);">
+        <a href="#" class="btn btn-primary">Read Our Manifesto</a>
+        <a href="#" class="btn btn-secondary">View Case Studies</a>
+      </div>
+    </article>
+    
+  </div>
+</body>
+</html>
